@@ -1,0 +1,10 @@
+{
+  "name": "angular-migrations",
+  "version": "1.0.1",
+  "description": "A sqlite migration system for Angular",
+  "main": "index.js",
+  "repository": "git@github.com:MSMLBV/angular-migrations.git",
+  "author": "MSML B.V. <mikeschoneveld@msml.nl>",
+  "license": "MIT",
+  "private": false
+}
