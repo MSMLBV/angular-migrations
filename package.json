@@ -5,6 +5,9 @@
     "repository": "git@github.com:MSMLBV/angular-migrations.git",
     "author": "joostlawerman <joostlawerman@users.noreply.github.com>",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
