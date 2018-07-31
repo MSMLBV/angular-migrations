@@ -16,7 +16,7 @@
         "watch": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "release": "np publish"
+        "release": "np --contents=dist"
     },
     "peerDependencies": {
         "@angular/common": "^5.2.0 || ^6.0.0",
