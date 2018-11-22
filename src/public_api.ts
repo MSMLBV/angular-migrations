@@ -14,4 +14,4 @@ export * from './lib/sql/builder/builder';
 export * from './lib/sql/builder/alter-builder';
 export * from './lib/sql/builder/drop-builder';
 
-// export * from './lib/migration.module';
+export * from './lib/migration.module';

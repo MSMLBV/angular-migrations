@@ -3,8 +3,8 @@ import { MigrationService } from './providers/migration.service';
 import { Migration } from './sql/migration';
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { InjectorMigrations } from './providers/migrations';
-import { migrationsFactory } from './providers/migration.service.spec';
 
+// @dynamic
 @NgModule({
     imports: [],
     providers: [MigrationService]

@@ -5,14 +5,14 @@ export class AlterBuilder extends Builder {
     /**
      * addColumn alias
      */
-    public column(name: string, type: string, params: string[] = []) {
+    public column(name: string, type: string, params: string[] = []): Column {
         return this.addColumn('add', name, type, params);
     }
 
     /**
      * Drop a certain column
      */
-    public dropColumn(name: string) {
+    public dropColumn(name: string): Column {
         return this.addColumn('drop', name);
     }
 

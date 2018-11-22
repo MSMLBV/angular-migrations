@@ -1,12 +1,11 @@
 import { Builder } from './builder';
-import { Column } from '../column';
 
 export class DropBuilder extends Builder {
 
         /**
          * Generate drop statement
          */
-        public getDropStatement(cases) {
+        public getDropStatement(cases): string {
             return this.statement('drop', cases);
         }
 
