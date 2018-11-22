@@ -26,10 +26,10 @@ export class CreateUsersTable extends Migration {
     up(): Array<Promise<any>> {
         return [
             // Configure the schema
-            Schema.create('users', (b) => {
-                b.column('id', 'integer', ['PRIMARY', 'AUTO_INCREMENT']);
-                b.column('name', 'string');
-                b.column('email', 'string');
+            Schema.create('users', (table) => {
+                table.column('id', 'integer', ['PRIMARY', 'AUTO_INCREMENT']);
+                table.column('name', 'string');
+                table.column('email', 'string');
             }).execute(this.sql)
         ];
     }
