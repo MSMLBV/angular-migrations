@@ -3,7 +3,9 @@ import { TestBed, inject } from '@angular/core/testing';
 import { MigrationService } from './migration.service';
 import { InjectorMigrations } from './migrations';
 import { SQLService as AbstractSQLService } from '../contracts/sql.service';
-import { CreateLocationsTable } from './spec/create-locations-table';
+import { CreateUsersTable } from './spec/create-users-table.migration';
+import { BrowserSQLiteService } from './spec/browser-sqlite-service';
+import { Schema } from '../sql/schema';
 
 describe('MigrationService', () => {
     beforeEach(() => {
@@ -12,7 +14,7 @@ describe('MigrationService', () => {
                 MigrationService,
                 {
                     provide: AbstractSQLService,
-                    useClass: SQLService
+                    useClass: BrowserSQLiteService
                 },
                 {
                     provide: InjectorMigrations,
@@ -27,15 +29,30 @@ describe('MigrationService', () => {
         [MigrationService],
         (service: MigrationService) => {
             expect(service).toBeTruthy();
+        }
+    ));
+
+    it('should resolve migrate', inject(
+        [MigrationService],
+        (service: MigrationService) => {
+            let state = null;
+
+            service.migrated$.subscribe(
+                migrated => state = migrated
+            );
+
+            spyOn(service, 'migrate').and.returnValue(Promise.resolve(true));
 
             service.migrate();
+
+            service.dropTables();
         }
     ));
 });
 
 export function migrationsFactory() {
     return [
-        new CreateLocationsTable()
+        new CreateUsersTable()
     ];
 }
 

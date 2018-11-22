@@ -44,11 +44,12 @@ export abstract class Migration implements MigrationContract {
 
                     throw new Error(
                         'Error: migrating `' +
-                            this.name +
+                            this.name + ' (' +
+                            error.query.statement + ') ' +
                             '` (code: ' +
-                            error.code +
+                            error.err.code +
                             ', message: ' +
-                            error.err.message +
+                            (error.err.message || 'no message') +
                             ')'
                     );
                 }

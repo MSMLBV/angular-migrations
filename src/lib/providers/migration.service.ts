@@ -19,7 +19,7 @@ export class MigrationService {
     /**
      * Migration pool
      */
-    protected migrations: Array<Migration>;
+    public migrations: Array<Migration>;
 
     /**
      * Migrated state subject
@@ -57,12 +57,12 @@ export class MigrationService {
                 responses => {
                     this.migrated.next(true);
 
-                    resolve();
+                    resolve(true);
                 },
                 error => {
                     this.migrated.next(true);
 
-                    reject();
+                    reject(error);
                 }
             );
         });
@@ -153,7 +153,7 @@ export class MigrationService {
     /**
      * Drop all tables that exist
      */
-    protected dropTables() {
+    public dropTables() {
         return new Promise((resolve, reject) => {
             // Get all active tables
             this.sqlService.query(`

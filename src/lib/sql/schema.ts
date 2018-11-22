@@ -48,7 +48,7 @@ export class Schema {
         return buildable;
     }
 
-    constructor(protected builder: Buildable) {}
+    constructor(public builder: Buildable) {}
 
     /**
      * Add an exists case

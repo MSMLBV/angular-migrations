@@ -71,7 +71,7 @@ export class Builder implements Buildable {
      */
     public toSql(cases): string[] {
         return [
-            [this.getCreateStatement(this.getColumns().join(','), cases)].join(
+            [this.getCreateStatement(this.getColumns().join(', '), cases)].join(
                 ' '
             )
         ];

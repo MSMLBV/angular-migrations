@@ -10,7 +10,7 @@ export class Column {
      * Compile a create column statement
      */
     protected compileCreate(): string {
-        return [this.name, this.type.toUpperCase()].concat(this.params).join(' ');
+        return [this.name, this.type.toUpperCase(), ...this.params].join(' ');
     }
 
     /**
