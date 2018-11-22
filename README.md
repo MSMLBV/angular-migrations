@@ -1,5 +1,7 @@
 
-# Angular-migrations
+# Angular migrations
+
+A system to manage migrations within an Angular application. Angular migrations makes it easier to create local tables and manage changes in the structure. It includes a schema builder to make it easier to create, alter or drop tables.
 
 ## Installation
 
@@ -158,6 +160,7 @@ new CreateUsersTable([
 ### Child modules
 
 You can add migrations in child modules using the `forChild` method provided with a factory.
+These migrations will only be executed when the child module is included within the app module.
 
 ```
 // ./modules/fiend/app.module.ts
