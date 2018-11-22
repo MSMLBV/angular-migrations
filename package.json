@@ -5,6 +5,7 @@
     "repository": "git@github.com:MSMLBV/angular-migrations.git",
     "author": "joostlawerman <joostlawerman@users.noreply.github.com>",
     "license": "MIT",
+	"keywords": ["ionic", "angular", "migrations", "sql", "migrate", "database", "schema"],
     "publishConfig": {
         "access": "public"
     },
