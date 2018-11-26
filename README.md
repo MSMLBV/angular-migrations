@@ -1,17 +1,19 @@
 
 # Angular migrations
 
-A system to manage migrations within an Angular application. Angular migrations makes it easier to create local tables and manage changes in the structure. It includes a schema builder to make it easier to create, alter or drop tables.
+A package to manage migrations within an Angular application. Angular migrations makes it easier to create local tables and manage their structure. It includes a schema builder to create, alter or drop tables.
 
 ## Installation
 
-Add the package via your favorite package manager
+Add the package via your favorite package manager.
 
 ```
-$ yarn add @msml/angular-migrations
+yarn add @msml/angular-migrations
+
+npm i @msml/angular-migrations
 ```
 
-Create a migration
+Create a migration.
 
 ```
 // ./create-users-table.migration.ts
@@ -21,7 +23,7 @@ import { Schema } from '@msml/angular-migrations';
 
 export class CreateUsersTable extends Migration {
     public name = 'create_users_table';
-    
+
     // Create the table
     up(): Array<Promise<any>> {
         return [
@@ -41,11 +43,12 @@ export class CreateUsersTable extends Migration {
 }
 ```
 
-Add the migration module to your main AppModule
+Add the migration module to your main AppModule.
+
 ```
 // app.module.ts
 
-import { MigrationModule, Migration } from '@msml/angular-migrations'; 
+import { MigrationModule, Migration } from '@msml/angular-migrations';
 
 // Import the migration you just created
 import { CreateUsersTable } from './create-users-table.migration'
@@ -71,7 +74,7 @@ export function myMigrationFactory(): Migration[] {
 export class AppModule {}
 ```
 
-Create an SQL service that implements the SQLService (This example only works in browsers)
+Create an SQL service that implements the SQLService (this example only works in browsers).
 
 ```
 import { SQLService } from '@msml/angular-migrations';
@@ -146,12 +149,12 @@ export class BrowserSQLiteService implements SQLService {
 
 ### Nesting
 
-When certain migrations should be executed after another one you can add them in the constructor like: 
+When certain migrations should be executed one after another, you can add them in the constructor as follows:
 
 ```
 new CreateUsersTable([
     new AddCreatedAtToUsersTable([
-        new removeCreatedAtFromUsersTable(), 
+        new removeCreatedAtFromUsersTable(),
     ]),
     new AddActiveToUsersTable(),
 ])
@@ -165,7 +168,7 @@ These migrations will only be executed when the child module is included within 
 ```
 // ./modules/fiend/app.module.ts
 
-import { MigrationModule, Migration } from '@msml/angular-migrations'; 
+import { MigrationModule, Migration } from '@msml/angular-migrations';
 
 // Import the migration you just created
 import { CreateFriendsTable } from './create-friends-table.migration'
@@ -190,7 +193,3 @@ export function myMigrationFactory(): Migration[] {
 })
 export class ChildModule {}
 ```
-
-
-
-
