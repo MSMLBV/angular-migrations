@@ -5,6 +5,8 @@ A package to manage migrations within an Angular application. Angular migrations
 
 ## Installation
 
+Note: this requires angular ^6.1.0
+
 Add the package via your favorite package manager.
 
 ```
@@ -62,7 +64,7 @@ export function myMigrationFactory(): Migration[] {
         //...
 
         // Insert the module in your root module
-        MigrationModule.forRoot(myMigrationsFactory),
+        MigrationModule.forRoot(myMigrationFactory),
 
         //...
     ]
