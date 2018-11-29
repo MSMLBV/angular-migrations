@@ -18,25 +18,21 @@ Create a migration.
 ```
 // ./create-users-table.migration.ts
 
-import { Migration } from '@msml/angular-migrations';
-import { Schema } from '@msml/angular-migrations';
+import { Schema, Migration } from '@msml/angular-migrations';
 
 export class CreateUsersTable extends Migration {
     public name = 'create_users_table';
 
-    // Create the table
     up(): Array<Promise<any>> {
         return [
-            // Configure the schema
-            Schema.create('users', (table) => {
-                table.column('id', 'integer', ['PRIMARY', 'AUTO_INCREMENT']);
-                table.column('name', 'string');
-                table.column('email', 'string');
+            Schema.create('users', (b) => {
+                b.column('id', 'integer', ['PRIMARY KEY', 'AUTOINCREMENT']);
+                b.column('name', 'string');
+                b.column('email', 'string');
             }).execute(this.sql)
         ];
     }
 
-    // Down migrations are currently not supported
     down(): Array<Promise<any>> {
         return [];
     }
