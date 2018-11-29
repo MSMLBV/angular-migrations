@@ -60,7 +60,7 @@ export class MigrationService {
                     resolve(true);
                 },
                 error => {
-                    this.migrated.next(true);
+                    this.migrated.next(false);
 
                     reject(error);
                 }
@@ -107,7 +107,9 @@ export class MigrationService {
                             // Handle the pool of migrations
                             this.handleMigrations(
                                 this.migrations,
-                                migrated
+                                migrated.map(
+                                    migrated => migrated.name
+                                )
                             ).then(responses => {
                                 this.log('debug', 'Done');
 

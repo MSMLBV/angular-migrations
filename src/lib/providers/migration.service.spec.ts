@@ -6,6 +6,7 @@ import { SQLService as AbstractSQLService } from '../contracts/sql.service';
 import { CreateUsersTable } from './spec/create-users-table.migration';
 import { BrowserSQLiteService } from './spec/browser-sqlite-service';
 import { Schema } from '../sql/schema';
+import { setTimeout } from 'timers';
 
 describe('MigrationService', () => {
     beforeEach(() => {
@@ -38,14 +39,16 @@ describe('MigrationService', () => {
             let state = null;
 
             service.migrated$.subscribe(
-                migrated => state = migrated
+                migrated => {
+                    state = migrated;
+                }
             );
-
-            spyOn(service, 'migrate').and.returnValue(Promise.resolve(true));
 
             service.migrate();
 
-            service.dropTables();
+            setTimeout(() => {
+                service.migrate();
+            }, 500);
         }
     ));
 });
