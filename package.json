@@ -29,8 +29,8 @@
         "release": "np --contents=dist"
     },
     "peerDependencies": {
-        "@angular/common": "^5.2.0 || ^6.0.0",
-        "@angular/core": "^5.2.0 || ^6.0.0"
+        "@angular/common": "^6.1.0",
+        "@angular/core": "^6.1.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.7.0",
